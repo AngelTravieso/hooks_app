@@ -1,9 +1,12 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
+import { TodoAdd } from './TodoAdd';
+import { TodoList } from './TodoList';
 import { todoReducer } from './todoReducer';
 
 
 export const TodoApp = () => {
 
+    // Objeto con el estado incial
     const initialState = [
         {
             id: new Date().getTime(),
@@ -12,52 +15,45 @@ export const TodoApp = () => {
         },
         {
             id: new Date().getTime() * 3,
-            description: 'Recolectar la piedra del alma',
+            description: 'Recolectar la piedra del tiempo',
             done: false,
         },
     ];
 
+
     const [ todos, dispatch ] = useReducer( todoReducer, initialState );
 
+    // Para agregar un nuevo todo
+    const handleNewTodo = ( todo ) => {
+
+        const action = {
+            type: '[TODO] Add Todo',
+            payload: todo,
+        }
+
+        // Es la funcion que se va a llamar para mandar el action
+        dispatch( action );
+
+    }
+
+
   return (
+
     <>
-        <h1>TodoApp: 10, <small>pendientes: 2</small> </h1>
+        <h1>TodoApp: 10, <small>pendientes: 2</small></h1>
         <hr />
 
         <div className="row">
             <div className="col-7">
-                <ul className="list-group">
-                {
-                    todos.map( todo => (
-                        <li key={ todo.id } className="list-group-item d-flex justify-content-between">
-                        <span className="align-self-center">Item 1</span>
-                        <button className="btn btn-danger">Borrar</button>
-                    </li>
-                    ))
-                }
-                </ul>
+                <TodoList todos={ todos } />
             </div>
-            <div className="col-5">
-                <h4>Agregar TODO</h4>
-                <hr />
-
-                <form>
-                    <input 
-                    type="text"
-                    placeholder='¿Qué hay que hacer?'
-                    className='form-control'
-                    />
-
-                    <button 
-                        type="submit"
-                        className="btn btn-outline-primary mt-1"
-                    >
-                        Agregar
-                    </button>
-                </form>
-            </div>
+                <div className="col-5">
+                    <h4>Agregar TODO</h4>
+                    <hr />
+                    <TodoAdd onNewTodo={ handleNewTodo } />
+            </div>                
         </div>
-
+ 
     </>
   )
 }
