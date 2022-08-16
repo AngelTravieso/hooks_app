@@ -14,16 +14,18 @@ import { Padre } from './07-tarea-memo/Padre';
 import { HookApp } from './HookApp';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-    // <FormWithCustomHook />
-    // <CounterWithCustomHook />
-    // <MultipleCustomHooks />
-    // <FocusScreen />
-    // <Layout />
-    // <Memorize />
-    // <MemoHook />
-    // <CallbackHook />
-    <Padre />
-  // </React.StrictMode>
-)
+import './08-useReducer/intro-reducer';
+
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   // <React.StrictMode>
+//     // <FormWithCustomHook />
+//     // <CounterWithCustomHook />
+//     // <MultipleCustomHooks />
+//     // <FocusScreen />
+//     // <Layout />
+//     // <Memorize />
+//     // <MemoHook />
+//     // <CallbackHook />
+//     <Padre />
+//   // </React.StrictMode>
+// )
