@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { HomePage, AboutPage, LoginPage, Navbar } from "./";
+import { UserProvider } from "./context/UserProvider";
 
 
 export const MainApp = () => {
   return (
-    <>
+    <UserProvider>
         <Navbar />
         <hr />
 
@@ -20,6 +21,6 @@ export const MainApp = () => {
 
         </Routes>
 
-    </>
+    </UserProvider>
   )
 }
